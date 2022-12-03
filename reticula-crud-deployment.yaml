@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: reticula-crud
+  labels:
+    app: reticula-crud-front
+spec:
+  selector:
+    matchLabels:
+      app: reticula-crud-front
+      tier: reticula-crud
+  replicas: 7
+  template:
+    metadata:
+      labels:
+        app: reticula-crud-front
+        tier: reticula-crud
+    spec:
+      containers:
+        - name: reticula-crud
+          image: emmanuelhra601/apireticula-php-apache-environment:version1
+          ports:
+            - containerPort: 80
